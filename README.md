@@ -11,6 +11,9 @@
 # Isowire
 An elegant isomorphic API for Fluxible apps to communicate with databases and other backend services.
 
+## Demo app
+[opentable/fluxible-isowire/demo](https://github.com/opentable/fluxible-isowire-demo)
+
 ## Getting Started
 To use Isowire in your Fluxible app, you need three things: some API methods, the Fluxible plugin, and the connect/express middleware.
 
