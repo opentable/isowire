@@ -1,0 +1,4 @@
+--require should
+--require should-promised
+--reporter dot
+--ui bdd

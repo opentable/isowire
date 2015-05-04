@@ -1,0 +1,35 @@
+{
+  "name": "isowire",
+  "version": "0.0.1",
+  "description": "An isomorphic interface for Fluxible apps to send/fetch data from external sources like databases",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha"
+  },
+  "keywords": [
+    "fluxible",
+    "react",
+    "flux",
+    "data",
+    "fetch",
+    "api"
+  ],
+  "author": "Noah Burney",
+  "license": "MIT",
+  "dependencies": {
+    "detect-node": "~2.0.3",
+    "es6-promise": "~2.1.1",
+    "is-promise": "~2.0.0",
+    "lodash": "~3.7.0",
+    "superagent": "~1.2.0"
+  },
+  "devDependencies": {
+    "fluxible": "~0.4.6",
+    "mocha": "~2.0.1",
+    "mockery": "~1.4.0",
+    "nock": "^1.7.1",
+    "react": "~0.13.2",
+    "should": "~6.0.1",
+    "should-promised": "^0.2.1"
+  }
+}
