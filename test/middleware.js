@@ -4,6 +4,7 @@ var getMiddleware = require('../lib/middleware');
 
 describe('middleware()', function() {
   var mockProvider;
+  var mockResponse;
   var middleware;
   var execMethodArguments;
 
@@ -29,6 +30,18 @@ describe('middleware()', function() {
       }
     };
 
+    mockResponse = {
+      json: function() {
+        return this;
+      },
+      send: function() {
+        return this;
+      },
+      error: function() {
+        return this;
+      }
+    };
+
     middleware = getMiddleware(mockProvider);
   });
 
@@ -40,7 +53,7 @@ describe('middleware()', function() {
   it('should skip requests that aren’t under xhrPath', function() {
     var nextCalled = false;
     var req = {path: '/not/xhrPath/'};
-    var res = {};
+    var res = mockResponse;
     var next = function() { nextCalled = true; };
 
     middleware(req, res, next);
@@ -65,7 +78,7 @@ describe('middleware()', function() {
   it('should call user-defined API method', function() {
     var methodName = 'test.method';
     var req = {path: mockProvider.xhrPath + methodName};
-    var res = {};
+    var res = mockResponse;
     var next = function() { console.log("next() was called"); };
 
     middleware(req, res, next);
@@ -78,7 +91,7 @@ describe('middleware()', function() {
     var methodName = 'test.method';
     var query = {foo: 'foo', bar: 'bar'};
     var req = {path: mockProvider.xhrPath + methodName, query: query};
-    var res = {};
+    var res = mockResponse;
     var next = function() { console.log("next() was called"); };
 
     middleware(req, res, next);
