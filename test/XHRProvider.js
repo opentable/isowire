@@ -17,7 +17,7 @@ describe('XHRProvider', function() {
   });
   
   it('sets methods using Provider interface', function() {
-    var options = { methods: { search: { name: 'search', verb: 'get' }}};
+    var options = { methods: { search: { name: 'search', verb: 'post' }}};
     var xhrProvider = new XHRProvider(options);
     
     xhrProvider.methods.should.eql(options.methods);

@@ -25,7 +25,7 @@ describe('API', function() {
     api.methods[0].fn.should.equal(fn);
   });
   
-  it('builds methods with a default verb of "get"', function() {
+  it('builds methods with a default verb of "post"', function() {
     var api = API();
     var name = 'test.foo';
     var fn = function() {};
@@ -33,7 +33,7 @@ describe('API', function() {
     api.method(name, fn);
     
     api.methods.should.have.lengthOf(1);
-    api.methods[0].verb.should.eql('get');
+    api.methods[0].verb.should.eql('post');
     api.methods[0].name.should.equal(name);
     api.methods[0].fn.should.equal(fn);
   });

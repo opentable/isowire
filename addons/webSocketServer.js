@@ -23,7 +23,7 @@ module.exports = function webSocketServer(provider, httpServer) {
 
       var response = {type: 'response', id: message.id};
 
-      provider._execMethodNode('get', call.name, call.params)
+      provider._execMethodNode('post', call.name, call.params)
         .then(function(result) {
           response.result = result;
           ws.send(JSON.stringify(response));

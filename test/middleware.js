@@ -16,7 +16,7 @@ describe('middleware()', function() {
       methods: {
         "test.method": {
           name: "test.method",
-          verb: "get",
+          verb: "post",
           fn: function(params) {
             return new Promise(function(resolve, reject) {
               resolve(params);
@@ -77,20 +77,33 @@ describe('middleware()', function() {
 
   it('should call user-defined API method', function() {
     var methodName = 'test.method';
-    var req = {path: mockProvider.xhrPath + methodName};
+    var req = {path: mockProvider.xhrPath + methodName, body: {}};
     var res = mockResponse;
     var next = function() { console.log("next() was called"); };
 
     middleware(req, res, next);
 
-    execMethodArguments[0].should.equal('get');
+    execMethodArguments[0].should.equal('post');
     execMethodArguments[1].should.equal(methodName);
   });
 
   it('should pass GET params to API method', function() {
     var methodName = 'test.method';
     var query = {foo: 'foo', bar: 'bar'};
-    var req = {path: mockProvider.xhrPath + methodName, query: query};
+    var req = {path: mockProvider.xhrPath + methodName, query: query, body: {}};
+    var res = mockResponse;
+    var next = function() { console.log("next() was called"); };
+
+    middleware(req, res, next);
+
+    execMethodArguments[2].foo.should.equal('foo');
+    execMethodArguments[2].bar.should.equal('bar');
+  });
+
+  it('should pass POST body to API method', function() {
+    var methodName = 'test.method';
+    var body = {foo: 'foo', bar: 'bar'};
+    var req = {path: mockProvider.xhrPath + methodName, body: body};
     var res = mockResponse;
     var next = function() { console.log("next() was called"); };
 

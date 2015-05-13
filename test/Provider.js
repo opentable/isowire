@@ -13,7 +13,7 @@ describe('Provider', function() {
   });
   
   it('overloads default options', function() {
-    var options = { methods: { search: { name: 'search', verb: 'get' }}};
+    var options = { methods: { search: { name: 'search', verb: 'post' }}};
     var provider = new Provider(options);
     
     provider.options.should.eql(options);
@@ -22,7 +22,7 @@ describe('Provider', function() {
   
   it('adds a method', function() {
     var provider = new Provider();
-    var method = { name: 'search', verb: 'get' };
+    var method = { name: 'search', verb: 'post' };
     
     provider.addMethod(method);
     
@@ -31,7 +31,7 @@ describe('Provider', function() {
   
   it('errors adding a method if the method is already defined', function() {
     var provider = new Provider();
-    var method = { name: 'search', verb: 'get' };
+    var method = { name: 'search', verb: 'post' };
     
     provider.addMethod(method);
     
@@ -44,8 +44,8 @@ describe('Provider', function() {
   it('adds methods from api', function() {
     var provider = new Provider();
     var api = { methods: {
-      search: { name: 'search', verb: 'get' },
-      select: { name: 'select', verb: 'get' }
+      search: { name: 'search', verb: 'post' },
+      select: { name: 'select', verb: 'post' }
     }};
     
     provider.addAPI(api);
@@ -60,14 +60,14 @@ describe('Provider', function() {
     var provider = new Provider();
     
     (function() {
-      provider.execMethod('get', 'nope', {});
+      provider.execMethod('post', 'nope', {});
     }).should.throw("Isowire: the method 'nope' has not been defined.")
   });
   
   it('dehydrates methods', function() {
     var options = { methods: {
-      search: { name: 'search', verb: 'get', fn: function() {} },
-      select: { name: 'select', verb: 'get', fn: function() {} }
+      search: { name: 'search', verb: 'post', fn: function() {} },
+      select: { name: 'select', verb: 'post', fn: function() {} }
     }};
     var provider = new Provider(options);
     var dehydrated = provider.dehydrate();
@@ -83,8 +83,8 @@ describe('Provider', function() {
   it('rehydrates methods', function() {
     var provider = new Provider();
     var data = { methods: {
-      search: { name: 'search', verb: 'get' },
-      select: { name: 'select', verb: 'get' }
+      search: { name: 'search', verb: 'post' },
+      select: { name: 'select', verb: 'post' }
     }};
     
     provider.rehydrate(data);
