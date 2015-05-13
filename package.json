@@ -1,6 +1,6 @@
 {
   "name": "isowire",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "An isomorphic interface for Fluxible apps to send/fetch data from external sources like databases",
   "main": "index.js",
   "scripts": {
